@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenatech | Hardware y Componentes de PC</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+    
+    <style>
+        /* Variables de color y fuentes */
+        :root {
+            --primary-blue: #27D6F5;
+            --bg-dark: #0A0A0A;
+            --text-light: #f5f5f5;
+            --text-dark: #222222;
+            --accent-green: #2ecc71;
+            --accent-red: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-dark);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-blue);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2.2rem;
+        }
+
+        /* Hero Section con overlay verde oscuro semitransparente (18%) */
+        .hero {
+            background-image: linear-gradient(rgba(0, 40, 15, 0.18), rgba(0, 40, 15, 0.18)), url('https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 90px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 2.6rem;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Contenedor principal Responsive */
+        .contenedor {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .contenedor h2.section-title {
+            text-align: center;
+            color: var(--bg-dark);
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        /* Grid de Tarjetas Avanzadas */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .tarjeta {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+            border-top: 4px solid var(--bg-dark);
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border-top-color: var(--primary-blue);
+        }
+
+        /* Bloque Imagen e Identificación */
+        .product-image-container {
+            text-align: center;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta img {
+            max-width: 100%;
+            max-height: 160px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .tarjeta h3 {
+            font-size: 1.15rem;
+            color: var(--bg-dark);
+            margin: 10px 0;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .meta-badges {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .badge-brand { background: #e2e8f0; color: #4a5568; }
+        .badge-price { background: #e0f7fa; color: #006064; }
+
+        .description-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Especificaciones Técnicas */
+        .specs-box {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+
+        .specs-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.85rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        .specs-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .specs-list li:last-child { border-bottom: none; }
+
+        /* Puntuaciones de Rendimiento */
+        .scores-box {
+            margin-bottom: 15px;
+        }
+        .scores-box h4 { margin: 0 0 8px 0; font-size: 0.85rem; color: #718096; text-transform: uppercase;}
+        
+        .score-row {
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+        }
+        .score-labels { display: flex; justify-content: space-between; margin-bottom: 4px; font-weight: 600; }
+        .score-bar-bg { background: #edf2f7; height: 6px; border-radius: 3px; overflow: hidden; }
+        .score-bar-fill { background: var(--primary-blue); height: 100%; border-radius: 3px; }
+
+        /* Contenido Editorial */
+        .editorial-box {
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 12px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+        .editorial-box p { margin: 4px 0; }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+        .pros-list, .cons-list { padding: 0; margin: 0; list-style: none; }
+        .pros-list li { color: #27ae60; margin-bottom: 3px; }
+        .cons-list li { color: #c0392b; margin-bottom: 3px; }
+
+        .highlight-text {
+            background: #fff9db;
+            border: 1px dashed #f59f00;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Reseñas y Puntuaciones */
+        .reviews-box {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stars { color: #f1c40f; }
+
+        /* Botón de Compra */
+        .boton-amazon {
+            display: block;
+            background-color: var(--bg-dark);
+            color: var(--primary-blue);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            border: 2px solid var(--bg-dark);
+            transition: all 0.3s ease;
+            margin-top: auto;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .boton-amazon:hover {
+            background-color: var(--primary-blue);
+            color: var(--bg-dark);
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(39, 214, 245, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .aviso-legal {
+            font-size: 0.85rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        /* Exit Popup */
+        #exit-popup {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border-top: 6px solid var(--primary-blue);
+            position: relative;
+        }
+
+        .popup-content h3 {
+            color: var(--bg-dark);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .popup-content p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .popup-content input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .popup-content button {
+            background: var(--primary-blue);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .popup-content button:hover {
+            background: #1bb9d6;
+        }
+
+        .close-popup {
+            margin-top: 20px;
+            display: inline-block;
+            cursor: pointer;
+            color: #888;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Tenatech</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>Arquitectura y Rendimiento a tu Alcance</h2>
+        <p>Encuentra los componentes clave para armar o actualizar tu setup. Selección técnica especializada para maximizar tus FPS y optimizar tu presupuesto.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="contenedor">
+        <h2 class="section-title">Análisis Técnico de Componentes</h2>
+        
+        <div class="grid-productos">
+            
+            <!-- PRODUCTO 1: AMD RYZEN 5 5500 -->
+            <div class="tarjeta">
+                <div class="product-image-container">
+                    <img src="https://m.media-amazon.com/images/I/51So7GoGvxL._AC_SX679_.jpg" alt="AMD Ryzen 5 5500" onerror="this.style.display='none'">
+                </div>
+                <h3>AMD Ryzen 5 5500 Procesador (6 núcleos/12 threads, 65W TDP, Socket AM4, 19MB Caché, Reloj de aumento máx. hasta 4.2 GHz,con ventilador Wraith Stealh)</h3>
+                <div class="meta-badges">
+                    <span class="badge badge-brand">Marca: AMD</span>
+                    <span class="badge badge-price">Gama: Económica</span>
+                </div>
+                <p class="description-text">Procesador eficiente con arquitectura Zen 3 equilibrada, ideal para estaciones de juego competitivas a 1080p sin disparar el presupuesto del setup.</p>
+                
+                <div class="specs-box">
+                    <h4>Especificaciones Técnicas</h4>
+                    <ul class="specs-list">
+                        <li><span>Núcleos / Hilos:</span> <strong>6 / 12</strong></li>
+                        <li><span>Frecuencia Boost:</span> <strong>Hasta 4.2 GHz</strong></li>
+                        <li><span>Caché Total:</span> <strong>19 MB</strong></li>
+                        <li><span>TDP / Consumo:</span> <strong>65 W</strong></li>
+                        <li><span>Disipador Incluido:</span> <strong>Wraith Stealth</strong></li>
+                    </ul>
+                </div>
+
+                <div class="scores-box">
+                    <h4>Métricas de Rendimiento</h4>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad-Precio</span><span>9.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Gaming FPS</span><span>8.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Eficiencia Térmica</span><span>9.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="editorial-box">
+                    <p><strong>Ideal para:</strong> Armados gaming económicos enfocados en exprimir títulos esports y multitarea moderada.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <ul class="pros-list">
+                        <li>✓ Precio insuperable</li>
+                        <li>✓ Incluye ventilador</li>
+                        <li>✓ Muy fresco</li>
+                    </ul>
+                    <ul class="cons-list">
+                        <li>✗ Limitado a PCIe 3.0</li>
+                        <li>✗ Menos caché que 5600</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-text">
+                    "La mejor opción del mercado actual para mantener el procesador por debajo de los $100 sin perder fluidez."
+                </div>
+
+                <div class="reviews-box">
+                    <div class="reviews-header"><span>Valoración Media</span><span class="stars">★★★★★ 4.7</span></div>
+                    <p><strong>Resumen (1,250+ opiniones):</strong> Los usuarios destacan su excelente estabilidad en juegos modernos y temperaturas muy bajas incluso con el disipador de stock.</p>
+                </div>
+
+                <a href="https://www.amazon.es/AMD-RyzenTM-5-5500-Box/dp/B09VCJ171S?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=FLONT0WLSS8F&dib=eyJ2IjoiMSJ9.lwIq6H4B0SF_MvcdM60fBSjIOZP0_isc5VBt2k6fWbCPtpboc6ZR81s3UoYMERP3cBm_JCpi0Q-qPZxSZw6I8nalgxr_VufJIDbr__i5sbLTqlymMx9cot9He6qqkKha54mNUScem7k3WcnsbuYmU9PM5hHDq29583MY9X8RhhjnOVaF-yahW40KvShIILGg0HHjITDWX1ueQDPuQFV762ALUV5Bm2Z4gjR23FiRrn_KT481rW2tRr_nrpz45RV6tY66tfM-8uRTzTtkle1IOk6ecV-s7ob9bRztcvwR_oQ.nVJLBgjlnt2kkcGPlBE8l1jW257zZOxse6FwNHQC-5o&dib_tag=se&keywords=ryzen%2B5550&qid=1783971043&sprefix=ryzen%2B5550x%2Caps%2C490&sr=8-1&th=1&linkCode=ll2&tag=luismanuel18-21&linkId=6519f211c6f48f604cf425b6b798087d&ref_=as_li_ss_tl" class="boton-amazon" target="_blank" rel="nofollow">Ver precio en Amazon</a>
+            </div>
+
+            <!-- PRODUCTO 2: TIMETEC PINNACLE KONDUIT 16GB -->
+            <div class="tarjeta">
+                <div class="product-image-container">
+                    <img src="https://m.media-amazon.com/images/I/71sggTJphSL._AC_SX679_.jpg" alt="Timetec RAM 16GB" onerror="this.style.display='none'">
+                </div>
+                <h3>Timetec Pinnacle Konduit DDR4 XMP2.0 Overclocking 1,35 V Dual Rank Compatible con AMD e Intel Desktop Gaming PC Módulo de Memoria - Blanco (16GB Kit(2x8GB) 3200MHz)</h3>
+                <div class="meta-badges">
+                    <span class="badge badge-brand">Marca: Timetec</span>
+                    <span class="badge badge-price">Gama: Entrada</span>
+                </div>
+                <p class="description-text">Kit de memoria optimizado para Overclocking estable mediante perfiles XMP 2.0, con disipador blanco texturizado de gran impacto visual.</p>
+                
+                <div class="specs-box">
+                    <h4>Especificaciones Técnicas</h4>
+                    <ul class="specs-list">
+                        <li><span>Capacidad Total:</span> <strong>16GB Kit (2 x 8GB)</strong></li>
+                        <li><span>Frecuencia / Tipo:</span> <strong>3200 MHz DDR4</strong></li>
+                        <li><span>Latencia CAS:</span> <strong>CL16-18-18-38</strong></li>
+                        <li><span>Voltaje Operativo:</span> <strong>1.35 V (Dual Rank)</strong></li>
+                        <li><span>Compatibilidad:</span> <strong>Intel y AMD Setup</strong></li>
+                    </ul>
+                </div>
+
+                <div class="scores-box">
+                    <h4>Métricas de Rendimiento</h4>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad-Precio</span><span>9.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Estabilidad</span><span>8.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Diseño Estético</span><span>8.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="editorial-box">
+                    <p><strong>Ideal para:</strong> Activar Dual Channel de forma económica asegurando tasas altas de FPS estables.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <ul class="pros-list">
+                        <li>✓ Costo ultra bajo</li>
+                        <li>✓ Disipador estético blanco</li>
+                        <li>✓ XMP 2.0 fluido</li>
+                    </ul>
+                    <ul class="cons-list">
+                        <li>✗ Marca menos conocida</li>
+                        <li>✗ Overclock manual corto</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-text">
+                    "La alternativa blanca perfecta para configuraciones limpias que requieren un rendimiento sólido sin sobrecostos."
+                </div>
+
+                <div class="reviews-box">
+                    <div class="reviews-header"><span>Valoración Media</span><span class="stars">★★★★☆ 4.5</span></div>
+                    <p><strong>Resumen (340+ opiniones):</strong> Cumple perfectamente. Los usuarios reportan que levanta los 3200MHz al instante tras activar el perfil en placas AMD/Intel.</p>
+                </div>
+
+                <a href="https://www.amazon.es/Timetec-Pinnacle-Konduit-CL16-18-18-38-compatible/dp/B09T2LCVL7?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=21NG4HZI0V84F&dib=eyJ2IjoiMSJ9.-UDEJJVIeZ0zu5d3Wu74ecJkwt48fQe6c1bjJq-ActNodD2p8nS8sZap4NSg8CL1mkGzSrMy7CT5gpGGQ4FJUkVVBnJHd-m_SEfuzpVvQUEeyvOBJ9AbO7pCusPUTAxzvfsPZ72mnxuAGkRgUbh5xz_ehgccW_UAqng5DXSLINsndHDGlHNwKN_HrCH6XqfzY_p4GcGi5Zsa5CrR9EBfpf6KPUk6L8JPvUd89wD4aH_3Fp2wmbAENXvbchdk4R2hHqu8dFNS7icZADfhGtgzRevuyASpsiSYjtaRguczJtw.CSTyis9pzTWaR6oZb7n4u3NYkmisvtNyiJu3mXaGzno&dib_tag=se&keywords=ram%2Bddr4&qid=1783972758&sprefix=ram%2Bddr4%2Caps%2C238&sr=8-9&th=1&linkCode=ll2&tag=luismanuel18-21&linkId=77c56d32f7f2da81e4c8e575aaf8f591&ref_=as_li_ss_tl" class="boton-amazon" target="_blank" rel="nofollow">Ver precio en Amazon</a>
+            </div>
+
+            <!-- PRODUCTO 3: CORSAIR VENGEANCE LPX 32GB -->
+            <div class="tarjeta">
+                <div class="product-image-container">
+                    <img src="https://m.media-amazon.com/images/I/61wCOVcyvFL._AC_SX679_.jpg" alt="Corsair Vengeance 32GB" onerror="this.style.display='none'">
+                </div>
+                <h3>CORSAIR Vengeance LPX DDR4 RAM 32GB (2x16GB) hasta 3200MHz CL16-20-20-38 1.35V Intel AMD Memoria de Ordenador de Sobremesa - Negro (CMK32GX4M2E3200C16)</h3>
+                <div class="meta-badges">
+                    <span class="badge badge-brand">Marca: Corsair</span>
+                    <span class="badge badge-price">Gama: Media-Alta</span>
+                </div>
+                <p class="description-text">Memorias de perfil bajo construidas con disipadores de aluminio puro, diseñadas para máxima compatibilidad con disipadores de CPU masivos.</p>
+                
+                <div class="specs-box">
+                    <h4>Especificaciones Técnicas</h4>
+                    <ul class="specs-list">
+                        <li><span>Capacidad Total:</span> <strong>32GB Kit (2 x 16GB)</strong></li>
+                        <li><span>Frecuencia / Tipo:</span> <strong>3200 MHz DDR4</strong></li>
+                        <li><span>Latencia / Voltaje:</span> <strong>CL16 / 1.35V</strong></li>
+                        <li><span>PCB Material:</span> <strong>Rendimiento 8 capas</strong></li>
+                        <li><span>Formato:</span> <strong>Low Profile (Perfil Bajo)</strong></li>
+                    </ul>
+                </div>
+
+                <div class="scores-box">
+                    <h4>Métricas de Rendimiento</h4>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Compatibilidad</span><span>10/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Capacidad Tareas</span><span>9.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad-Precio</span><span>9.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="editorial-box">
+                    <p><strong>Ideal para:</strong> Streamers, editores de video y jugadores de títulos demandantes de mundo abierto.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <ul class="pros-list">
+                        <li>✓ Altísima compatibilidad</li>
+                        <li>✓ Excelente disipación</li>
+                        <li>✓ 32GB para el futuro</li>
+                    </ul>
+                    <ul class="cons-list">
+                        <li>✗ No posee luces RGB</li>
+                        <li>✗ Diseño muy sobrio</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-text">
+                    "El estándar absoluto de la industria. Si buscas fiabilidad a largo plazo sin fallas, esta es la RAM indicada."
+                </div>
+
+                <div class="reviews-box">
+                    <div class="reviews-header"><span>Valoración Media</span><span class="stars">★★★★★ 4.8</span></div>
+                    <p><strong>Resumen (4,800+ opiniones):</strong> Una de las memorias mejor valoradas. Los clientes aprecian su durabilidad y su capacidad total para eliminar tirones en juegos pesados.</p>
+                </div>
+
+                <a href="https://www.amazon.es/CORSAIR-VENGEANCE-CL16-20-20-38-Ordenador-Sobremesa/dp/B07RW6Z692?__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=A4Q1TYTZL4OO&dib=eyJ2IjoiMSJ9.CzgQ3nDxoSoCRi2NkIt1jCp8GB1YxD3hxQJCm_kFIiJ1Dp16skSTyphGRBAL58ga7a067dna13V2RUNWDELuE0GHWy3ZQHaFl3L-lTjj013gEhOZdjIdOOnH3mL7rzLj23x-NJedSjexNF5au-xXG90fLLGjKdwwrB2BXwhfP4J8BfLChLVsijL_Lt5BT6QcKn6pnsMEjk9NewMoDshfNzaBGx0KyJS5lL7MMnA4M6CANFwWPII-MocboTm9rLGkSP6N5ik1o4w8EXVlWz9DycB6vutGVCv9OtzB7QgakU0.Aw4vK9-eWqC5bvhI6PfeN-xsTcgTVbUSia4dFBgovlo&dib_tag=se&keywords=ram%2Bddr4%2B8x2&qid=1783971774&sprefix=ram%2Bddr4%2B8x2%2B%2Caps%2C217&sr=8-1&th=1&linkCode=ll2&tag=luismanuel18-21&linkId=f34a07444ee3480a0d7985004922ca03&ref_=as_li_ss_tl" class="boton-amazon" target="_blank" rel="nofollow">Ver precio en Amazon</a>
+            </div>
+
+            <!-- PRODUCTO 4: GIGABYTE B550M AORUS ELITE -->
+            <div class="tarjeta">
+                <div class="product-image-container">
+                    <img src="https://m.media-amazon.com/images/I/81QyMksmunL._AC_SX679_.jpg" alt="Gigabyte B550M AORUS" onerror="this.style.display='none'">
+                </div>
+                <h3>GIGABYTE B550M AORUS Elite Placa Base - Procesadores AMD Ryzen 5000, VRM de 5+3 Fases, hasta 4733 MHz DDR4, 1xPCIe 4.0 + 1xPCIe 3.0 M.2, LAN 1GbE, USB 3.2 Gen 1</h3>
+                <div class="meta-badges">
+                    <span class="badge badge-brand">Marca: Gigabyte</span>
+                    <span class="badge badge-price">Gama: Media</span>
+                </div>
+                <p class="description-text">Placa base robusta Micro-ATX con fases digitales estables, ideal para asegurar la máxima entrega de energía limpia a componentes de alta gama.</p>
+                
+                <div class="specs-box">
+                    <h4>Especificaciones Técnicas</h4>
+                    <ul class="specs-list">
+                        <li><span>Fases de Poder:</span> <strong>VRM 5+3 Fases Digitales</strong></li>
+                        <li><span>Soporte RAM:</span> <strong>Hasta 4733 MHz DDR4</strong></li>
+                        <li><span>Ranuras M.2:</span> <strong>1x PCIe 4.0 + 1x PCIe 3.0</strong></li>
+                        <li><span>Conectividad LAN:</span> <strong>Realtek GbE 1Gbps</strong></li>
+                        <li><span>Puertos:</span> <strong>USB 3.2 Gen 1 Integrados</strong></li>
+                    </ul>
+                </div>
+
+                <div class="scores-box">
+                    <h4>Métricas de Rendimiento</h4>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Capacidad Update</span><span>9.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad de VRM</span><span>8.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad-Precio</span><span>9.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="editorial-box">
+                    <p><strong>Ideal para:</strong> Usuarios que buscan una placa base duradera con soporte para unidades SSD NVMe de cuarta generación.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <ul class="pros-list">
+                        <li>✓ Disipación robusta</li>
+                        <li>✓ Doble Puerto M.2</li>
+                        <li>✓ BIOS muy intuitiva</li>
+                    </ul>
+                    <ul class="cons-list">
+                        <li>✗ Sin conexión Wi-Fi</li>
+                        <li>✗ Pocos conectores USB</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-text">
+                    "La base perfecta para montar tu Ryzen con la seguridad de que la placa resistirá actualizaciones potentes a futuro."
+                </div>
+
+                <div class="reviews-box">
+                    <div class="reviews-header"><span>Valoración Media</span><span class="stars">★★★★☆ 4.6</span></div>
+                    <p><strong>Resumen (980+ opiniones):</strong> Los compradores alaban la robustez de los disipadores integrados y la facilidad para actualizar la BIOS sin necesidad de procesador (Q-Flash Plus).</p>
+                </div>
+
+                <a href="https://www.amazon.es/Gigabyte-Technology-B550M-AORUS-Elite/dp/B08BN8VD23?crid=5B77ILLLZ4FQ&dib=eyJ2IjoiMSJ9.KvOIq72di2JGeF-k9OYMj4txyAOeSNUqzJKLET7nQy8REsDE3Skz-TW2REtWxVIkxs6g0hNTMM0aN4txtptPFZHPSd99jfsweKbzePYjW2K6rrTenEYyG1mq83NG3nf1F3EKRbkmjVV29hxUQR5ONyyigoHo6SEIQhu07E8anPrsQO_-fNm6HMS7oJYlKVvhD3NQyE6GYFRfZUtW8SNkPCx5aDl8AGfeLfSFhI-E02JevvXGHXYKmtLYUTRoHNatx0uEceZh1mSp6-UZCZp2SMr7QBpMYkvjS3-IbS0kagg.iPgtbwy61JAtMlfYA7X1nvOxgdMq3K5ichmDn_U8ERc&dib_tag=se&keywords=b550%2Bam4&qid=1783971880&sprefix=b550%2Caps%2C238&sr=8-1&th=1&linkCode=ll2&tag=luismanuel18-21&linkId=30e0179dce683d8f81314b5003b3307a&ref_=as_li_ss_tl" class="boton-amazon" target="_blank" rel="nofollow">Ver precio en Amazon</a>
+            </div>
+
+            <!-- PRODUCTO 5: CRUCIAL BX500 480GB -->
+            <div class="tarjeta">
+                <div class="product-image-container">
+                    <img src="https://m.media-amazon.com/images/I/51zhuXxYuRL._AC_SX679_.jpg" alt="Crucial BX500 SSD" onerror="this.style.display='none'">
+                </div>
+                <h3>Crucial BX500 SATA SSD 480GB Interno 2.5", Hasta 540MB/s, Compatible con Ordenador Portátil y de Sobremesa (PC), 3D NAND, Aceleración de escritura dinámica - CT480BX500SSD1</h3>
+                <div class="meta-badges">
+                    <span class="badge badge-brand">Marca: Crucial</span>
+                    <span class="badge badge-price">Gama: Económica</span>
+                </div>
+                <p class="description-text">Unidad de almacenamiento de estado sólido de alto rendimiento basada en memoria 3D NAND, óptima para acelerar drásticamente el arranque del sistema.</p>
+                
+                <div class="specs-box">
+                    <h4>Especificaciones Técnicas</h4>
+                    <ul class="specs-list">
+                        <li><span>Capacidad Formato:</span> <strong>480GB / 2.5 Pulgadas</strong></li>
+                        <li><span>Interfaz Conexión:</span> <strong>SATA III (6 Gb/s)</strong></li>
+                        <li><span>Velocidad Lectura:</span> <strong>Hasta 540 MB/s</strong></li>
+                        <li><span>Tecnología Celda:</span> <strong>3D NAND avanzada</strong></li>
+                        <li><span>Escritura Extra:</span> <strong>Aceleración Dinámica</strong></li>
+                    </ul>
+                </div>
+
+                <div class="scores-box">
+                    <h4>Métricas de Rendimiento</h4>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Calidad-Precio</span><span>9.5/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Velocidad SATA</span><span>7.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-labels"><span>Durabilidad</span><span>8.0/10</span></div>
+                        <div class="score-bar-bg"><div class="score-bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="editorial-box">
+                    <p><strong>Ideal para:</strong> Dejar atrás discos mecánicos lentos o como almacenamiento secundario rápido exclusivo para juegos.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <ul class="pros-list">
+                        <li>✓ Extremadamente barato</li>
+                        <li>✓ Marca líder confiable</li>
+                        <li>✓ Software clonación gratis</li>
+                    </ul>
+                    <ul class="cons-list">
+                        <li>✗ No posee caché DRAM</li>
+                        <li>✗ Más lento que un M.2</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-text">
+                    "La forma más barata y segura de revivir cualquier PC vieja o añadir espacio rápido para tus juegos pesados."
+                </div>
+
+                <div class="reviews-box">
+                    <div class="reviews-header"><span>Valoración Media</span><span class="stars">★★★★★ 4.7</span></div>
+                    <p><strong>Resumen (8,200+ opiniones):</strong> Los compradores valoran positivamente el cambio inmediato en los tiempos de carga del sistema operativo y programas pesados tras su instalación.</p>
+                </div>
+
+                <a href="https://www.amazon.es/Crucial-BX500-CT480BX500SSD1-Interno-Pulgadas/dp/B07G3KGYZQ?crid=27XIQHOTKT9J8&dib=eyJ2IjoiMSJ9.0DmtEYPaPfF8uwBH4xc5zESuaREZ880pN_aa7-PWng0vbjkRluVwElXMshx9t-iIrROiitRxDSzoBeB4AbWOLldK5UO4H-jz8AbZ-kLPTjy5R8hEO4NheB2q8zRn-z9x2pDRSDgDWBKkl0bojNeUUGB_FMPNNAz8MS1MbDuyRVNYzrGBrG7dwTqpQX2x5Gz-bR7jhKZNeSjQ0iXG3WUsJaUR3L2m2cXVAsRfozasDynwswN3W3G77wJFdRFKfJUodOXa_Q16UGD5UZ2vVBdSdk5hF44DcIHARn62qP2dytc.xq5hiV1VJkIEqMzS4z5eILpWYlrO3W_QrBdeyVFpDEc&dib_tag=se&keywords=ssd%2B500gb%2Bcrucial&qid=1783972482&refinements=p_36%3A-15000&rnid=1323854031&sprefix=%2Caps%2C239&sr=8-1&th=1&linkCode=ll2&tag=luismanuel18-21&linkId=7ffeacfad12ac5180f52740557388b07&ref_=as_li_ss_tl" class="boton-amazon" target="_blank" rel="nofollow">Ver precio en Amazon</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Tenatech</h2>
+        <div class="aviso-legal">
+            <p>En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables. Los precios y la disponibilidad de los productos son exactos en la fecha y hora indicadas y están sujetos a cambios.</p>
+        </div>
+    </footer>
+
+    <!-- Exit Popup -->
+    <div id="exit-popup">
+        <div class="popup-content">
+            <h3>¡No te vayas sin las mejores ofertas!</h3>
+            <p>Suscríbete para recibir alertas de bajadas de precio en hardware y componentes antes que nadie.</p>
+            <input type="email" placeholder="Ingresa tu correo electrónico">
+            <button>Quiero las ofertas</button>
+            <span class="close-popup" onclick="cerrarPopup()">No gracias, prefiero pagar más</span>
+        </div>
+    </div>
+
+    <!-- Script del Popup -->
+    <script>
+        let popupMostrado = false;
+
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY < 0 && !popupMostrado) {
+                document.getElementById('exit-popup').style.display = 'flex';
+                popupMostrado = true;
+            }
+        });
+
+        function cerrarPopup() {
+            document.getElementById('exit-popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
